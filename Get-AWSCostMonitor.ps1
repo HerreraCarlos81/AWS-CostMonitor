@@ -1,3 +1,6 @@
+# Created by Carlos Herrera
+# www.codedneurons.com
+
 # Get the current and previous month names for the report titles
 $currentMonthName = (Get-Date).ToString("MMMM yyyy")
 $currentMonthName = $currentMonthName.Substring(0,1).ToUpper() + $currentMonthName.Substring(1)
