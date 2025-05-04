@@ -4,7 +4,6 @@ $currentMonthName = $currentMonthName.Substring(0,1).ToUpper() + $currentMonthNa
 $previousMonthName = (Get-Date).AddMonths(-1).ToString("MMMM yyyy")
 $previousMonthName = $previousMonthName.Substring(0,1).ToUpper() + $previousMonthName.Substring(1)
 
-#$PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'
 # Set the correct output encoding
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
@@ -120,8 +119,7 @@ $report | Select-Object Profile, Account, @{Name='Cost';Expression={'{0:F2} USD'
 Write-Host "$currentMonthName (Profiles containing 'cost-monitor')"
 Write-Host "Total Cost: " -NoNewline
 Write-Host "$currentTotalCost USD" -ForegroundColor Blue
-#$color = if ($_.Variation -gt 0) { 'Red' } elseif ($_.Variation -lt 0) { 'Green' } else { 'Yellow' }
-#$report | Select-Object Profile, Account, @{Name='Cost';Expression={'{0:F2} USD' -f $_.CurrentCost}}, @{Name="Variation ($([char]0x0394))";Expression={if ($_.Variation -gt 0) { '{0:F2}% -ForegroundColor Red' -f $_.Variation} elseif ($_.Variation -lt 0) { '{0:F2}% -ForegroundColor Green' -f $_.Variation } else { '{0:F2}% -ForegroundColor Yellow' -f $_.Variation}}} | Format-Table -AutoSize
+
 Write-Host "Profile                            Account           Cost            Variation ($([char]0x0394))"
 Write-Host "-------                            -------           ----            -------------"
 $report | ForEach-Object {
